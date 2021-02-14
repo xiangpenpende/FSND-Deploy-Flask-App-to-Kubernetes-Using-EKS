@@ -119,8 +119,13 @@ Resources:
         ZipFile: |
           import json
           import boto3
+          import cfnresponse
           from botocore.vendored import requests
           def handler(event, context):
+            # # This comment was added to force an update on this function's code
+            # responseData = {'Message': 'Hello {}!'.format(event['ResourceProperties']['Name'])}
+            # cfnresponse.send(event, context, cfnresponse.SUCCESS, responseData, "CustomResourcePhysicalID")
+            
             response = {
               'Status': 'SUCCESS',
               "Reason": "See the details in CloudWatch Log Stream: " + context.log_stream_name,
